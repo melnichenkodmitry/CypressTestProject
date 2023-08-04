@@ -1,2 +1,2 @@
 # CypressProject
-Проект с автотестами front'а на cypress
+Проект с автотестами Front'а на Cypress
