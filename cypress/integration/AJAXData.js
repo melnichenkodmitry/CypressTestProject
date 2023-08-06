@@ -1,10 +1,9 @@
-context('Посещение страницы', function () {
+context('AJAX Data', function () {
     beforeEach(function () {
         cy.visit('/ajax')
     })
 
-//Перехват запроса с подменой тела
-    it('Асинхронные данные с подменой тела. AJAX Data with intercept', () => {
+    it('Асинхронные данные с подменой тела', () => {
         cy.intercept('GET', '**/ajaxdata', {
             body: "Peter Pan",
         }).as('ajaxdata') //перехват запроса
@@ -14,8 +13,7 @@ context('Посещение страницы', function () {
         cy.get('p[class="bg-success"]').should('have.text', 'Peter Pan')
     });
 
-//Перехват запроса без подмены тела
-    it('Асинхронные данные без подмены тела. AJAX Data with intercept', () => {
+    it('Асинхронные данные без подмены тела', () => {
         cy.intercept('GET', '**/ajaxdata').as('ajaxdata') //перехват запроса
 
         cy.get('button[id="ajaxButton"]').click()
@@ -23,8 +21,7 @@ context('Посещение страницы', function () {
         cy.get('p[class="bg-success"]').should('have.text', 'Data loaded with AJAX get request.')
     });
 
-//Перехват запроса с подменой статус-кода
-    it('Асинхронные данные с подменой статуса. AJAX Data with intercept', () => {
+    it('Асинхронные данные с подменой статуса', () => {
         cy.intercept('GET', '**/ajaxdata', {
             statusCode: 500,
         }).as('ajaxdata') //перехват запроса
